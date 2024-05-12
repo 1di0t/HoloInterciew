@@ -52,11 +52,19 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/
 
+  uses-material-design: true
+  
+  fonts:
+    - family: NanumBarunpenB
+      fonts:
+        - asset: assets/fonts/NanumBarunpenB.ttf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
+      
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -75,9 +83,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: NanumBarunpenB
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: assets/fonts/NanumBarunpenB.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
