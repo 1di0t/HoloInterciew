@@ -13,7 +13,13 @@ class FeedBackPage extends StatelessWidget {
           SizedBox(
             height: 60,
           ),
-          Text("피드백 페이지")
+          Text(
+            "피드백 페이지",
+            style: TextStyle(
+                fontFamily: 'NanumBarunpenB',
+                fontSize: 30,
+                color: Colors.black87),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigatorBar(
