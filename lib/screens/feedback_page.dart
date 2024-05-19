@@ -1,28 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:holo_interview/screens/interview_page.dart';
+import 'package:holo_interview/widget/navigator_card.dart';
 import '../widget/bottom_navigator_bar_widget.dart';
 
+//==================================================
+//Feedback page
+//==================================================
 class FeedBackPage extends StatelessWidget {
   const FeedBackPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 60,
-          ),
-          Text(
-            "피드백 페이지",
-            style: TextStyle(
-                fontFamily: 'NanumBarunpenB',
-                fontSize: 30,
-                color: Colors.black87),
-          ),
-        ],
+    return Scaffold(
+      body: Padding(
+        //==================================================
+        //default padding in page
+        //==================================================
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            //==================================================
+            //SizedBox to aviod the camera
+            //==================================================
+            const SizedBox(
+              height: 60,
+            ),
+            //==================================================
+            //Title of the page
+            //==================================================
+            SizedBox(
+              height: 60,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "피드백 페이지",
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            //==================================================
+            //NavigatorCard to navigate to the interview page
+            //==================================================
+            const NavigatorCard(
+                texts: '네이버 면접 피드백',
+                nextPage: InterViewPage(),
+                imageUrl: "assets/images/quka.png"),
+          ],
+        ),
       ),
-      bottomNavigationBar: BottomNavigatorBar(
+      //==================================================
+      //BottomNavigationBar
+      //==================================================
+      bottomNavigationBar: const BottomNavigatorBar(
         firstButton: false,
         secondButton: false,
         thridButton: true,

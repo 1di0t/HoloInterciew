@@ -23,24 +23,23 @@ class MovingPageButton extends StatelessWidget {
             icon: Icon(
               iconData,
               size: 45,
-              color: setColor(isFocused),
+              color: setColor(isFocused, context),
             ),
             onPressed: () {
               Navigator.pushReplacement(
                   context,
+                  // pageBuilder is used to remove the transition animation and delete the previous page
                   PageRouteBuilder(
                       pageBuilder: (context, animation1, animation2) =>
                           nextPage,
                       transitionDuration: Duration.zero,
                       reverseTransitionDuration: Duration.zero));
             }),
-        Text(
-          buttonDetailTexts,
-          style: const TextStyle(
-              fontFamily: 'NanumBarunpenB',
-              fontSize: 13,
-              color: Colors.black87),
-        )
+        Text(buttonDetailTexts,
+            style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                color: setColor(isFocused, context),
+                fontWeight: FontWeight.bold,
+                fontSize: 15))
       ],
     );
   }

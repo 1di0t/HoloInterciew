@@ -16,14 +16,15 @@ class BottomNavigatorBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      padding: const EdgeInsets.all(5.0),
+      height: 88,
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       color: Theme.of(context).primaryColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           MovingPageButton(
             iconData: Icons.menu,
-            nextPage: InsertInfoPage(),
+            nextPage: const InsertInfoPage(),
             isFocused: firstButton,
             buttonDetailTexts: "입력",
           ),

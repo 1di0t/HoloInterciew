@@ -1,5 +1,6 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:holo_interview/widget/bottom_navigator_bar_widget.dart';
 import 'package:holo_interview/widget/combined_insert_info_widget.dart';
 import 'package:holo_interview/widget/insert_info_widget.dart';
@@ -15,12 +16,16 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
   final formKey = GlobalKey<FormState>();
   final Map<String, String> sendingData = {};
 
+  //==================================================
+  //Function to submit the data
+  //==================================================
   void submitData() {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
+      var jsonsendingData = jsonEncode(sendingData);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('입력된 데이터: $sendingData'),
+          content: Text('입력된 데이터: $jsonsendingData'),
         ),
       );
     }
@@ -30,26 +35,33 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        //==================================================
+        //default padding in page
+        //==================================================
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-                height:
-                    60), // Add this line to create space between the top of the screen and the title (정보 입력
-            const Text(
+            const SizedBox(height: 60),
+            //==================================================
+            //Title of the page
+            //==================================================
+            Text(
               "정보 입력",
-              style: TextStyle(
-                  fontFamily: 'NanumBarunpenB',
-                  fontSize: 30,
-                  color: Colors.black87),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
+            //==================================================
+            //Form to input the data wraped in Expanded
+            //==================================================
             Expanded(
               child: Form(
                 key: formKey,
                 child: ListView(
+                  padding: EdgeInsets.zero,
                   children: [
+                    //==================================================
                     //Education background section with 3 fields
+                    //==================================================
                     CombinedInsertInfoWidget(title: "학력", fields: [
                       InsertInfoWidget(
                         dataName: "학교명",
@@ -70,7 +82,9 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                         },
                       ),
                     ]),
+                    //==================================================
                     //Work experience section with 4 fields
+                    //==================================================
                     CombinedInsertInfoWidget(title: "업무 경력", fields: [
                       InsertInfoWidget(
                         dataName: "회사명",
@@ -97,7 +111,9 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                         },
                       ),
                     ]),
+                    //==================================================
                     //Project experience section with 3 fields
+                    //==================================================
                     CombinedInsertInfoWidget(title: "프로젝트 경험", fields: [
                       InsertInfoWidget(
                         dataName: "개발언어",
@@ -118,7 +134,9 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                         },
                       ),
                     ]),
-
+                    //==================================================
+                    //Button to submit the form
+                    //==================================================
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 25),
@@ -142,6 +160,9 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
           ],
         ),
       ),
+      //==================================================
+      //BottomNavigationBar
+      //==================================================
       bottomNavigationBar: const BottomNavigatorBar(
         firstButton: true,
         secondButton: false,
