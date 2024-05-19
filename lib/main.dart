@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           primaryColor: const Color(0xff6c6f7f),
-          scaffoldBackgroundColor: const Color(0xfff7f5fb)),
+          scaffoldBackgroundColor: const Color(0xfff7f5fb),
+          highlightColor: const Color(0xff70ae6e)),
       home: const HomePage(),
     );
   }
