@@ -122,9 +122,8 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                     //==================================================
                     //Button to submit the form
                     //==================================================
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 25),
+                    SizedBox(
+                      width: double.infinity,
                       child: TextButton(
                         style: TextButton.styleFrom(
                           backgroundColor: Theme.of(context).highlightColor,
@@ -132,11 +131,10 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                         onPressed: () => submitData(
                             context, _formKey, sendingData), //Submit the data
                         child: Text("저장",
-                            style: TextStyle(
-                                fontFamily: 'NanumBarunpenB',
-                                fontSize: 20,
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(color: Colors.white)),
                       ),
                     )
                   ],
