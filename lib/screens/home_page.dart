@@ -37,6 +37,7 @@ class HomePage extends StatelessWidget {
                     "메인 페이지",
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
+
                   //==================================================
                   //IconButton to navigate to the login page
                   //==================================================
@@ -47,11 +48,8 @@ class HomePage extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => const LoginPage()));
                       },
-                      icon: Icon(
-                        Icons.insert_emoticon_rounded,
-                        size: 40,
-                        color: Theme.of(context).disabledColor,
-                      ))
+                      iconSize: 40,
+                      icon: Image.asset("assets/icon/holointerview.png"))
                 ],
               ),
             ),
@@ -64,7 +62,7 @@ class HomePage extends StatelessWidget {
             const NavigatorCard(
                 texts: '네이버 면접 시작하기',
                 nextPage: InterViewPage(),
-                imageUrl: "assets/images/quka.png"),
+                imageUrl: "assets/images/holointerview.png"),
           ],
         ),
       ),

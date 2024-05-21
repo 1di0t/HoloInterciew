@@ -132,11 +132,11 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                         onPressed: () => submitData(
                             context, _formKey, sendingData), //Submit the data
                         child: Text("저장",
-                            style: TextStyle(
-                                fontFamily: 'NanumBarunpenB',
-                                fontSize: 20,
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(
+                                    color: Theme.of(context).disabledColor)),
                       ),
                     )
                   ],

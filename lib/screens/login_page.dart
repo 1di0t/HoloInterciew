@@ -49,13 +49,17 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton(
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Theme.of(context).highlightColor,
+                  ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       registerUser(context, loginData);
                     }
                   },
-                  child: const Text('Sign Up'),
+                  child: Text("로그인",
+                      style: Theme.of(context).textTheme.displaySmall),
                 ),
               ],
             ),

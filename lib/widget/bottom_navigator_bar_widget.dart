@@ -23,19 +23,19 @@ class BottomNavigatorBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           MovingPageButton(
-            iconData: Icons.menu,
+            iconData: Icons.assignment_add,
             nextPage: const InsertInfoPage(),
             isFocused: firstButton,
             buttonDetailTexts: "입력",
           ),
           MovingPageButton(
-            iconData: Icons.emoji_people_outlined,
+            iconData: Icons.other_houses_rounded,
             nextPage: const HomePage(),
             isFocused: secondButton,
             buttonDetailTexts: "홈",
           ),
           MovingPageButton(
-            iconData: Icons.document_scanner_rounded,
+            iconData: Icons.mark_unread_chat_alt_rounded,
             nextPage: const FeedBackPage(),
             isFocused: thridButton,
             buttonDetailTexts: "피드백",
