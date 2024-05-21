@@ -44,7 +44,7 @@ class _InterViewPageState extends State<InterViewPage> {
                         isUser: messages[index]['isUser']);
                   })),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 30),
             child: Row(
               children: <Widget>[
                 Expanded(

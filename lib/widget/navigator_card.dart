@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
 class NavigatorCard extends StatelessWidget {
-  final String texts;
-  final String imageUrl;
+  final String company;
   final Widget nextPage;
 
-  const NavigatorCard(
-      {super.key,
-      required this.texts,
-      required this.nextPage,
-      required this.imageUrl});
+  const NavigatorCard({
+    super.key,
+    required this.company,
+    required this.nextPage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +31,11 @@ class NavigatorCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                texts,
+                '$company 면접 시작하기',
                 style: Theme.of(context).textTheme.displayMedium,
               ),
               Image.asset(
-                imageUrl,
+                'assets/images/interview.png',
                 width: 100,
                 height: 100,
               ),
