@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:holo_interview/screens/home_page.dart';
 
 void main() => runApp(const MyApp());
@@ -12,10 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: const Color(0xff70ae6e),
+        primaryColor: const Color(0xff315c2b), //Main Color
         scaffoldBackgroundColor: const Color(0xfff7f5fb),
-        highlightColor: const Color(0xff315c2b),
-        disabledColor: const Color(0xff6c6f7f),
+        highlightColor: const Color(0xff70ae6e),
+        disabledColor: const Color(0xffa9bda6),
         focusColor: const Color(0xffff8811),
         textTheme: const TextTheme(
             displayLarge: TextStyle(

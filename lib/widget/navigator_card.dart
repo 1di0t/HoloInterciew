@@ -14,6 +14,8 @@ class NavigatorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      focusColor: const Color(0x00000000),
+      hoverColor: const Color(0x00000000),
       highlightColor: const Color(0x00000000),
       onTap: () {
         Navigator.push(

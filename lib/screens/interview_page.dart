@@ -30,7 +30,9 @@ class _InterViewPageState extends State<InterViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
       body: Column(
         children: <Widget>[
           Expanded(

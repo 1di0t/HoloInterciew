@@ -19,7 +19,7 @@ class ChatBox extends StatelessWidget {
         decoration: BoxDecoration(
           color: isUser
               ? Theme.of(context).highlightColor
-              : Theme.of(context).disabledColor,
+              : Theme.of(context).focusColor,
           borderRadius: BorderRadius.circular(5),
         ),
         child: Text(

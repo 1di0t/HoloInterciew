@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:holo_interview/widget/bottom_navigator_bar_widget.dart';
 import 'package:holo_interview/widget/combined_insert_info_widget.dart';
 import 'package:holo_interview/widget/insert_info_widget.dart';
+import '../api/network_api.dart';
 
 class InsertInfoPage extends StatefulWidget {
   const InsertInfoPage({super.key});
@@ -13,23 +12,9 @@ class InsertInfoPage extends StatefulWidget {
 }
 
 class _InsertInfoPageState extends State<InsertInfoPage> {
-  final formKey = GlobalKey<FormState>();
+  final _formKey =
+      GlobalKey<FormState>(); //Form key that can access in this file
   final Map<String, String> sendingData = {};
-
-  //==================================================
-  //Function to submit the data
-  //==================================================
-  void submitData() {
-    if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
-      var jsonsendingData = jsonEncode(sendingData);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('입력된 데이터: $jsonsendingData'),
-        ),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +40,7 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
             //==================================================
             Expanded(
               child: Form(
-                key: formKey,
+                key: _formKey,
                 child: ListView(
                   padding: EdgeInsets.zero,
                   children: [
@@ -144,7 +129,8 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                         style: TextButton.styleFrom(
                           backgroundColor: Theme.of(context).highlightColor,
                         ),
-                        onPressed: submitData,
+                        onPressed: () => submitData(
+                            context, _formKey, sendingData), //Submit the data
                         child: Text("저장",
                             style: TextStyle(
                                 fontFamily: 'NanumBarunpenB',

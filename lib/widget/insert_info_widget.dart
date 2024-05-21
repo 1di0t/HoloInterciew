@@ -30,7 +30,7 @@ class InsertInfoWidget extends StatelessWidget {
               onSaved: onSaved,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return '회사명을 입력해주세요';
+                  return '$dataName 입력';
                 }
                 return null;
               },

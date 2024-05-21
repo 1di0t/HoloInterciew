@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:holo_interview/screens/interview_page.dart';
 import 'package:holo_interview/widget/navigator_card.dart';
 import '../widget/bottom_navigator_bar_widget.dart';
