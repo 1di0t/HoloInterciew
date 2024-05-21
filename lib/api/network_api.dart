@@ -22,9 +22,7 @@ void submitData(BuildContext context, GlobalKey<FormState> formKey,
 //Function to register the user
 //==================================================
 Future<void> registerUser(
-    //change to return bool
-    BuildContext context,
-    Map<String, String> loginData) async {
+    BuildContext context, Map<String, String> loginData) async {
   const String flaskURL = '';
   final response = await http.post(
     Uri.parse(flaskURL), // Flask 서버의 IP 주소로 변경

@@ -49,17 +49,24 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 const SizedBox(height: 20),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Theme.of(context).highlightColor,
+                SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Theme.of(context).highlightColor,
+                      padding: const EdgeInsets.all(16.0),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        registerUser(context, loginData);
+                      }
+                    }, //Submit the data
+                    child: Text("로그인",
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(color: Colors.white)),
                   ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      registerUser(context, loginData);
-                    }
-                  },
-                  child: Text("로그인",
-                      style: Theme.of(context).textTheme.displaySmall),
                 ),
               ],
             ),

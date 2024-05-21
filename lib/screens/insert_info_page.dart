@@ -122,9 +122,8 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                     //==================================================
                     //Button to submit the form
                     //==================================================
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 25),
+                    SizedBox(
+                      width: double.infinity,
                       child: TextButton(
                         style: TextButton.styleFrom(
                           backgroundColor: Theme.of(context).highlightColor,
@@ -135,8 +134,8 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                             style: Theme.of(context)
                                 .textTheme
                                 .displayMedium!
-                                .copyWith(
-                                    color: Theme.of(context).disabledColor)),
+                                .copyWith(color: Colors.white)),
+
                       ),
                     )
                   ],

@@ -24,6 +24,8 @@ class NavigatorCard extends StatelessWidget {
         );
       },
       child: Card(
+        color: Theme.of(context).disabledColor,
+        elevation: 5,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Row(
