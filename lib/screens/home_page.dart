@@ -42,14 +42,16 @@ class HomePage extends StatelessWidget {
                   //IconButton to navigate to the login page
                   //==================================================
                   IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginPage()));
-                      },
-                      iconSize: 40,
-                      icon: Image.asset("assets/icon/holointerview.png"))
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()));
+                    },
+                    icon: Image.asset("assets/images/holoInterview.png",
+                        width: const Size.fromWidth(60).width,
+                        height: const Size.fromHeight(60).height),
+                  )
                 ],
               ),
             ),
@@ -60,9 +62,9 @@ class HomePage extends StatelessWidget {
             //NavigatorCard to navigate to the interview page
             //==================================================
             const NavigatorCard(
-                texts: '네이버 면접 시작하기',
-                nextPage: InterViewPage(),
-                imageUrl: "assets/images/holointerview.png"),
+              company: '네이버',
+              nextPage: InterViewPage(),
+            ),
           ],
         ),
       ),

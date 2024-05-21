@@ -48,9 +48,9 @@ class FeedBackPage extends StatelessWidget {
             //NavigatorCard to navigate to the interview page
             //==================================================
             const NavigatorCard(
-                texts: '네이버 면접 피드백',
-                nextPage: InterViewPage(),
-                imageUrl: "assets/images/quka.png"),
+              company: '네이버',
+              nextPage: InterViewPage(),
+            ),
           ],
         ),
       ),
