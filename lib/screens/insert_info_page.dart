@@ -135,6 +135,7 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                                 .textTheme
                                 .displayMedium!
                                 .copyWith(color: Colors.white)),
+
                       ),
                     )
                   ],
