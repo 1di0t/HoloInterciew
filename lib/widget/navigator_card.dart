@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:holo_interview/api/page_routing.dart';
 
 class NavigatorCard extends StatelessWidget {
   final String company;
-  final Widget nextPage;
+  final bool isFeedback;
 
   const NavigatorCard({
     super.key,
     required this.company,
-    required this.nextPage,
+    required this.isFeedback,
   });
 
   @override
@@ -19,7 +20,7 @@ class NavigatorCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => nextPage),
+          MaterialPageRoute(builder: (context) => routingPage(isFeedback)),
         );
       },
       child: Card(
