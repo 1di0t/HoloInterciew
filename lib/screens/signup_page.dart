@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:holo_interview/api/network_api.dart';
-import 'package:holo_interview/screens/signup_page.dart';
 import '../widget/insert_info_widget.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
-  final Map<String, String> loginData = {};
+  final Map<String, String> signUpData = {};
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +33,19 @@ class _LoginPageState extends State<LoginPage> {
                 InsertInfoWidget(
                   dataName: "아이디",
                   onSaved: (value) {
-                    loginData["userID"] = value!;
+                    signUpData["userID"] = value!;
                   },
                 ),
                 InsertInfoWidget(
                   dataName: "비밀번호",
                   onSaved: (value) {
-                    loginData["password"] = value!;
+                    signUpData["password"] = value!;
+                  },
+                ),
+                InsertInfoWidget(
+                  dataName: "이름",
+                  onSaved: (value) {
+                    signUpData["userName"] = value!;
                   },
                 ),
                 const SizedBox(height: 20),
@@ -53,29 +58,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        registerUser(context, loginData);
+                        submitData(context, _formKey, signUpData);
                       }
-                    }, //Submit the data
-                    child: Text("로그인",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium!
-                            .copyWith(color: Colors.white)),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      backgroundColor: Theme.of(context).highlightColor,
-                      padding: const EdgeInsets.all(16.0),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignUpPage()));
                     }, //Submit the data
                     child: Text("회원가입",
                         style: Theme.of(context)

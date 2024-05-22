@@ -60,12 +60,12 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                           sendingData["major"] = value!;
                         },
                       ),
-                      InsertInfoWidget(
-                        dataName: "학년",
-                        onSaved: (value) {
-                          sendingData["grade"] = value!;
-                        },
-                      ),
+                      // InsertInfoWidget(
+                      //   dataName: "학년",
+                      //   onSaved: (value) {
+                      //     sendingData["grade"] = value!;
+                      //   },
+                      // ),
                     ]),
                     //==================================================
                     //Work experience section with 4 fields
@@ -107,9 +107,9 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                         },
                       ),
                       InsertInfoWidget(
-                        dataName: "프레임워크",
+                        dataName: "기술",
                         onSaved: (value) {
-                          sendingData["framework"] = value!;
+                          sendingData["tech"] = value!;
                         },
                       ),
                       InsertInfoWidget(
@@ -135,7 +135,6 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                                 .textTheme
                                 .displayMedium!
                                 .copyWith(color: Colors.white)),
-
                       ),
                     )
                   ],

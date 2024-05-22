@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:holo_interview/screens/interview_page.dart';
 import 'package:holo_interview/widget/navigator_card.dart';
+import 'package:holo_interview/widget/navigator_card_list_widget.dart';
 import '../widget/bottom_navigator_bar_widget.dart';
 
 //==================================================
@@ -47,10 +48,7 @@ class FeedBackPage extends StatelessWidget {
             //==================================================
             //NavigatorCard to navigate to the interview page
             //==================================================
-            const NavigatorCard(
-              company: '네이버',
-              nextPage: InterViewPage(),
-            ),
+            NavigatorCardList(isFeedback: true),
           ],
         ),
       ),

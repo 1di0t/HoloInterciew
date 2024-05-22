@@ -9,8 +9,6 @@ class NavigatorCardList extends StatelessWidget {
     {"company": "Samsung", "interviewId": 3},
     {"company": "Apple", "interviewId": 4},
     {"company": "Facebook", "interviewId": 5},
-    {"company": "Google", "interviewId": 6},
-    {"company": "Coupang", "interviewId": 7}
   ];
   final bool isFeedback;
 
