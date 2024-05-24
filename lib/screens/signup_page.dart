@@ -20,7 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
           backgroundColor: Theme.of(context).primaryColor,
           toolbarHeight: 68,
           title: Text(
-            'Login Page',
+            'SignUp',
             style: Theme.of(context).textTheme.displayMedium,
           ),
         ),

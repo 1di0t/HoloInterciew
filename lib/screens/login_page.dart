@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
           backgroundColor: Theme.of(context).primaryColor,
           toolbarHeight: 68,
           title: Text(
-            'Login Page',
+            'Login',
             style: Theme.of(context).textTheme.displayMedium,
           ),
         ),
