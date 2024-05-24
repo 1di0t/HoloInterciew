@@ -1,64 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:holo_interview/screens/interview_page.dart';
-import 'package:holo_interview/widget/navigator_card.dart';
-import 'package:holo_interview/widget/navigator_card_list_widget.dart';
-import '../widget/bottom_navigator_bar_widget.dart';
+import 'package:holo_interview/widget/chat_box_widget.dart';
 
-//==================================================
-//Feedback page
-//==================================================
-class FeedBackPage extends StatelessWidget {
+class FeedBackPage extends StatefulWidget {
   const FeedBackPage({super.key});
+
+  @override
+  State<FeedBackPage> createState() => _FeedBackPageState();
+}
+
+class _FeedBackPageState extends State<FeedBackPage> {
+  final List<Map<String, dynamic>> messages = [];
+
+  void receiveMessage() {
+    Future.delayed(const Duration(milliseconds: 700), () {
+      setState(() {
+        //getMessage
+        String receiveMessage = 'Hello';
+        messages.add({'texts': 'I said $receiveMessage', 'isUser': false});
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        //==================================================
-        //default padding in page
-        //==================================================
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            //==================================================
-            //SizedBox to aviod the camera
-            //==================================================
-            const SizedBox(
-              height: 60,
-            ),
-            //==================================================
-            //Title of the page
-            //==================================================
-            SizedBox(
-              height: 60,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "피드백 페이지",
-                    style: Theme.of(context).textTheme.displayLarge,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            //==================================================
-            //NavigatorCard to navigate to the interview page
-            //==================================================
-            NavigatorCardList(isFeedback: true),
-          ],
-        ),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
       ),
-      //==================================================
-      //BottomNavigationBar
-      //==================================================
-      bottomNavigationBar: const BottomNavigatorBar(
-        firstButton: false,
-        secondButton: false,
-        thridButton: true,
+      body: Column(
+        children: <Widget>[
+          Expanded(
+              child: ListView.builder(
+                  itemCount: messages.length,
+                  itemBuilder: (context, index) {
+                    return ChatBox(
+                        texts: messages[index]['texts'],
+                        isUser: messages[index]['isUser']);
+                  })),
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  width: 150,
+                  child: TextButton(
+                    onPressed: receiveMessage,
+                    style: TextButton.styleFrom(
+                      backgroundColor: Theme.of(context).highlightColor,
+                      padding: const EdgeInsets.all(16.0),
+                    ),
+                    child: const Text('메세지 받기'),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

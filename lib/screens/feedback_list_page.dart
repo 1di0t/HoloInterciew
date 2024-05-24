@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:holo_interview/screens/login_page.dart';
 import 'package:holo_interview/widget/navigator_card_list_widget.dart';
 import '../widget/bottom_navigator_bar_widget.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+//==================================================
+//Feedback page
+//==================================================
+class FeedBackListPage extends StatelessWidget {
+  const FeedBackListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,29 +30,13 @@ class HomePage extends StatelessWidget {
             //==================================================
             SizedBox(
               height: 60,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "메인 페이지",
+                    "피드백",
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
-
-                  //==================================================
-                  //IconButton to navigate to the login page
-                  //==================================================
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginPage()));
-                    },
-                    icon: Image.asset("assets/images/holoInterview.png",
-                        width: const Size.fromWidth(60).width,
-                        height: const Size.fromHeight(60).height),
-                  )
                 ],
               ),
             ),
@@ -60,7 +46,7 @@ class HomePage extends StatelessWidget {
             //==================================================
             //NavigatorCard to navigate to the interview page
             //==================================================
-            NavigatorCardList(isFeedback: false),
+            NavigatorCardList(isFeedback: true),
           ],
         ),
       ),
@@ -69,8 +55,8 @@ class HomePage extends StatelessWidget {
       //==================================================
       bottomNavigationBar: const BottomNavigatorBar(
         firstButton: false,
-        secondButton: true,
-        thridButton: false,
+        secondButton: false,
+        thridButton: true,
       ),
     );
   }
