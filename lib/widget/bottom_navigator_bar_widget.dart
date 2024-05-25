@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:holo_interview/screens/feedback_page.dart';
+import 'package:holo_interview/screens/feedback_list_page.dart';
 import 'package:holo_interview/screens/home_page.dart';
 import 'package:holo_interview/screens/insert_info_page.dart';
 import 'package:holo_interview/widget/moving_page_button_widget.dart';
@@ -36,7 +36,7 @@ class BottomNavigatorBar extends StatelessWidget {
           ),
           MovingPageButton(
             iconData: Icons.mark_unread_chat_alt_rounded,
-            nextPage: const FeedBackPage(),
+            nextPage: const FeedBackListPage(),
             isFocused: thridButton,
             buttonDetailTexts: "피드백",
           ),

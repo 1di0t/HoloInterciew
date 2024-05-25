@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:holo_interview/api/page_routing.dart';
+import 'package:holo_interview/api/routing_page_api.dart';
 
 class NavigatorCard extends StatelessWidget {
   final String company;
@@ -18,9 +18,11 @@ class NavigatorCard extends StatelessWidget {
       hoverColor: const Color(0x00000000),
       highlightColor: const Color(0x00000000),
       onTap: () {
+        //여기에 GPT에게 기본정보 전송
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => routingPage(isFeedback)),
+          MaterialPageRoute(
+              builder: (context) => cardRouting(context, isFeedback)),
         );
       },
       child: Card(
@@ -32,7 +34,7 @@ class NavigatorCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '$company 면접 시작하기',
+                cardTextGetter(company, isFeedback),
                 style: Theme.of(context).textTheme.displayMedium,
               ),
               Image.asset(

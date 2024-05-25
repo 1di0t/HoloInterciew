@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:holo_interview/widget/chat_box_widget.dart';
+import 'package:http/http.dart' as http;
+import 'package:holo_interview/constants.dart';
 
 class FeedBackPage extends StatefulWidget {
   const FeedBackPage({super.key});
@@ -10,15 +14,29 @@ class FeedBackPage extends StatefulWidget {
 
 class _FeedBackPageState extends State<FeedBackPage> {
   final List<Map<String, dynamic>> messages = [];
+  final flaskServer = Constants.flaskServer;
+  var isended = false;
 
-  void receiveMessage() {
-    Future.delayed(const Duration(milliseconds: 700), () {
-      setState(() {
-        //getMessage
-        String receiveMessage = 'Hello';
-        messages.add({'texts': 'I said $receiveMessage', 'isUser': false});
+  Future<void> receiveMessage() async {
+    //The function to receive the message from the flask server
+    final response = await http.get(Uri.parse('$flaskServer/api/database'));
+    //Call the Get Method from the Flask server
+    if (response.statusCode == 200) {
+      //if the response is alright
+      Future.delayed(const Duration(milliseconds: 700), () {
+        //Delay the response for 700 milliseconds
+        setState(() {
+          final Map<String, dynamic> data = jsonDecode(response.body);
+          if (data.isNotEmpty) {
+            for (var values in data.values) {
+              messages.add({'texts': values, 'isUser': false});
+            }
+          } else {
+            isended = true;
+          }
+        });
       });
-    });
+    }
   }
 
   @override
@@ -45,7 +63,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                 SizedBox(
                   width: 150,
                   child: TextButton(
-                    onPressed: receiveMessage,
+                    onPressed: !isended ? receiveMessage : null,
                     style: TextButton.styleFrom(
                       backgroundColor: Theme.of(context).highlightColor,
                       padding: const EdgeInsets.all(16.0),
