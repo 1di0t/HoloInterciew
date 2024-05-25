@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:holo_interview/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:holo_interview/widget/chat_box_widget.dart';
 import 'package:http/http.dart' as http;
@@ -12,19 +12,19 @@ class InterViewPage extends StatefulWidget {
 }
 
 class _InterViewPageState extends State<InterViewPage> {
+  final flaskServer = Constants.flaskServer;
+  final List<Map<String, dynamic>> messages = [];
+  final TextEditingController textController = TextEditingController();
   @override
   void initState() {
     super.initState();
     setUser();
   }
 
-  final List<Map<String, dynamic>> messages = [];
-  final TextEditingController textController = TextEditingController();
-
   Future<void> setUser() async {
     //The function to set base infomation start the chat
     final response = await http.post(Uri.parse(
-        'http://127.0.0.1:5000/api/users')); //Call the Post Method from the Flask server
+        '$flaskServer/api/set')); //Call the Post Method from the Flask server
     try {
       if (response.statusCode == 200) {
         setState(() {
@@ -41,14 +41,16 @@ class _InterViewPageState extends State<InterViewPage> {
   }
 
   Future<void> sendMessage() async {
-    if (textController.text.isNotEmpty) {
+    if (textController.text.isNotEmpty && textController.text != "") {
+      //그냥 엔터만 누르는 것을 방지하는게 안됨
       final response = await http.post(
-        Uri.parse('http://127.0.0.1:5000/api/data'),
+        Uri.parse('$flaskServer/api/gpt'),
+        //Call the Post Method from the Flask server
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode(<String, String>{
-          'data': textController.text,
+          'sendingData': textController.text,
         }),
       );
 
@@ -64,7 +66,7 @@ class _InterViewPageState extends State<InterViewPage> {
   Future<void> receiveMessage() async {
     //The function to receive the message from the flask server
     final response = await http.get(Uri.parse(
-        'http://127.0.0.1:5000/api/data')); //Call the Get Method from the Flask server
+        '$flaskServer/api/gpt')); //Call the Get Method from the Flask server
     if (response.statusCode == 200) {
       //if the response is alright
       Future.delayed(const Duration(seconds: 1), () {
