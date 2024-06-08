@@ -119,6 +119,32 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                         },
                       ),
                     ]),
+                    CombinedInsertInfoWidget(title: "지원 세부사항", fields: [
+                      InsertInfoWidget(
+                        dataName: "지원 회사명",
+                        onSaved: (value) {
+                          sendingData["company"] = value!;
+                        },
+                      ),
+                      InsertInfoWidget(
+                        dataName: "산업군",
+                        onSaved: (value) {
+                          sendingData["industry"] = value!;
+                        },
+                      ),
+                      InsertInfoWidget(
+                        dataName: "부서",
+                        onSaved: (value) {
+                          sendingData["department"] = value!;
+                        },
+                      ),
+                      InsertInfoWidget(
+                        dataName: "직무",
+                        onSaved: (value) {
+                          sendingData["role"] = value!;
+                        },
+                      ),
+                    ]),
                     //==================================================
                     //Button to submit the form
                     //==================================================
