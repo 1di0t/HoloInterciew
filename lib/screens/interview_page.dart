@@ -43,6 +43,7 @@ class _InterViewPageState extends State<InterViewPage> {
   Future<void> sendMessage() async {
     if (textController.text.isNotEmpty && textController.text != "") {
       //그냥 엔터만 누르는 것을 방지하는게 안됨
+      messages.add({'texts': textController.text, 'isUser': true});
       final response = await http.post(
         Uri.parse('$flaskServer/api/gpt'),
         //Call the Post Method from the Flask server
@@ -50,42 +51,54 @@ class _InterViewPageState extends State<InterViewPage> {
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode(<String, String>{
-          'sendingData': textController.text,
+          'message': textController.text,
         }),
       );
 
       if (response.statusCode == 200) {
         setState(() {
-          messages.add({'texts': textController.text, 'isUser': true});
-          textController.clear();
+          final Map<String, dynamic> responsedata = jsonDecode(response.body);
+          if (responsedata['message'] == "수고하셨습니다") {
+            messages.add(
+                {'texts': "수고하셨습니다\n면접이 종료되었습니다\n3초 후 종료됩니다", 'isUser': false});
+            Future.delayed(const Duration(seconds: 3), () {
+              Navigator.pop(context);
+            });
+          } else {
+            messages.add({'texts': responsedata['message'], 'isUser': false});
+          }
+        });
+      } else {
+        setState(() {
+          messages.add({'texts': "서버와의 연결이 끊겼습니다", 'isUser': false});
         });
       }
     }
   }
 
-  Future<void> receiveMessage() async {
-    //The function to receive the message from the flask server
-    final response = await http.get(Uri.parse(
-        '$flaskServer/api/gpt')); //Call the Get Method from the Flask server
-    if (response.statusCode == 200) {
-      //if the response is alright
-      Future.delayed(const Duration(seconds: 1), () {
-        //Delay the response for 700 milliseconds
-        setState(() {
-          final Map<String, dynamic> data = jsonDecode(response.body);
-          String receivedMessage = data['message'];
-          if (receivedMessage.isNotEmpty) {
-            messages.add({'texts': receivedMessage, 'isUser': false});
-          } else {
-            messages.add({'texts': "면접이 종료되었습니다\n3초 후 종료됩니다", 'isUser': false});
-            Future.delayed(const Duration(seconds: 3), () {
-              Navigator.pop(context);
-            });
-          }
-        });
-      });
-    }
-  }
+  // Future<void> receiveMessage() async {
+  //   //The function to receive the message from the flask server
+  //   final response = await http.get(Uri.parse(
+  //       '$flaskServer/api/gpt')); //Call the Get Method from the Flask server
+  //   if (response.statusCode == 200) {
+  //     //if the response is alright
+  //     Future.delayed(const Duration(seconds: 1), () {
+  //       //Delay the response for 700 milliseconds
+  //       setState(() {
+  //         final Map<String, dynamic> data = jsonDecode(response.body);
+  //         String receivedMessage = data['message'];
+  //         if (receivedMessage.isEmpty) {
+  //           messages.add({'texts': "면접이 종료되었습니다\n3초 후 종료됩니다", 'isUser': false});
+  //           Future.delayed(const Duration(seconds: 3), () {
+  //             Navigator.pop(context);
+  //           });
+  //         } else if (receivedMessage.isNotEmpty) {
+  //           messages.add({'texts': receivedMessage, 'isUser': false});
+  //         }
+  //       });
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +135,7 @@ class _InterViewPageState extends State<InterViewPage> {
                   icon: const Icon(Icons.send_rounded),
                   onPressed: () {
                     sendMessage();
-                    receiveMessage();
+                    textController.clear();
                   },
                 )
               ],
