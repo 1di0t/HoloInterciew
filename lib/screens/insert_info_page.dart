@@ -29,13 +29,6 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
           children: [
             const SizedBox(height: 60),
             //==================================================
-            //Title of the page
-            //==================================================
-            Text(
-              "정보 입력",
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-            //==================================================
             //Form to input the data wraped in Expanded
             //==================================================
             Expanded(
