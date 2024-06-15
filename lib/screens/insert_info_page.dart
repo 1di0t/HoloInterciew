@@ -49,12 +49,14 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                     //==================================================
                     CombinedInsertInfoWidget(title: "학력", fields: [
                       InsertInfoWidget(
+                        isRequired: false,
                         dataName: "학교명",
                         onSaved: (value) {
                           sendingData["schoolName"] = value!;
                         },
                       ),
                       InsertInfoWidget(
+                        isRequired: false,
                         dataName: "전공",
                         onSaved: (value) {
                           sendingData["major"] = value!;
@@ -72,24 +74,28 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                     //==================================================
                     CombinedInsertInfoWidget(title: "업무 경력", fields: [
                       InsertInfoWidget(
+                        isRequired: false,
                         dataName: "회사명",
                         onSaved: (value) {
                           sendingData["companyName"] = value!;
                         },
                       ),
                       InsertInfoWidget(
+                        isRequired: false,
                         dataName: "직급",
                         onSaved: (value) {
                           sendingData["position"] = value!;
                         },
                       ),
                       InsertInfoWidget(
+                        isRequired: false,
                         dataName: "업무 세부사항",
                         onSaved: (value) {
                           sendingData["jobDetial"] = value!;
                         },
                       ),
                       InsertInfoWidget(
+                        isRequired: false,
                         dataName: "근무년수",
                         onSaved: (value) {
                           sendingData["years_of_service"] = value!;
@@ -101,18 +107,21 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                     //==================================================
                     CombinedInsertInfoWidget(title: "프로젝트 경험", fields: [
                       InsertInfoWidget(
+                        isRequired: false,
                         dataName: "개발언어",
                         onSaved: (value) {
                           sendingData["devLanguage"] = value!;
                         },
                       ),
                       InsertInfoWidget(
+                        isRequired: false,
                         dataName: "기술",
                         onSaved: (value) {
                           sendingData["tech"] = value!;
                         },
                       ),
                       InsertInfoWidget(
+                        isRequired: false,
                         dataName: "세부사항",
                         onSaved: (value) {
                           sendingData["detail"] = value!;
@@ -121,24 +130,28 @@ class _InsertInfoPageState extends State<InsertInfoPage> {
                     ]),
                     CombinedInsertInfoWidget(title: "지원 세부사항", fields: [
                       InsertInfoWidget(
+                        isRequired: true,
                         dataName: "지원 회사명",
                         onSaved: (value) {
                           sendingData["company"] = value!;
                         },
                       ),
                       InsertInfoWidget(
+                        isRequired: true,
                         dataName: "산업군",
                         onSaved: (value) {
                           sendingData["industry"] = value!;
                         },
                       ),
                       InsertInfoWidget(
+                        isRequired: true,
                         dataName: "부서",
                         onSaved: (value) {
                           sendingData["department"] = value!;
                         },
                       ),
                       InsertInfoWidget(
+                        isRequired: true,
                         dataName: "직무",
                         onSaved: (value) {
                           sendingData["role"] = value!;
