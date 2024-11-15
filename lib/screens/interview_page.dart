@@ -76,6 +76,7 @@ class _InterViewPageState extends State<InterViewPage> {
     }
   }
 
+  void _listen() async {}
   // Future<void> receiveMessage() async {
   //   //The function to receive the message from the flask server
   //   final response = await http.get(Uri.parse(
@@ -137,7 +138,13 @@ class _InterViewPageState extends State<InterViewPage> {
                     sendMessage();
                     textController.clear();
                   },
-                )
+                ),
+                IconButton(
+                  icon: const Icon(Icons.mic_rounded),
+                  onPressed: () {
+                    _listen();
+                  },
+                ),
               ],
             ),
           ),

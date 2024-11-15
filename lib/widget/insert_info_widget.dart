@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 class InsertInfoWidget extends StatelessWidget {
   final String dataName;
+  final bool isRequired;
   final FormFieldSetter<String> onSaved;
 
   const InsertInfoWidget(
-      {super.key, required this.dataName, required this.onSaved});
+      {super.key,
+      required this.dataName,
+      required this.onSaved,
+      required this.isRequired});
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +17,6 @@ class InsertInfoWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 15),
       child: Row(
         children: <Widget>[
-          // const Text("회사명",
-          //     style: TextStyle(
-          //         fontFamily: 'NanumBarunpenB',
-          //         fontSize: 20,
-          //         color: Colors.black87)),
-          // const SizedBox(
-          //   width: 20,
-          // ),
           Expanded(
             child: TextFormField(
               decoration: InputDecoration(
@@ -29,7 +25,7 @@ class InsertInfoWidget extends StatelessWidget {
               ),
               onSaved: onSaved,
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (isRequired == true && value!.isEmpty) {
                   return '$dataName 입력';
                 }
                 return null;

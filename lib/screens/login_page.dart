@@ -32,12 +32,14 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: <Widget>[
                 InsertInfoWidget(
+                  isRequired: true,
                   dataName: "아이디",
                   onSaved: (value) {
                     loginData["userID"] = value!;
                   },
                 ),
                 InsertInfoWidget(
+                  isRequired: true,
                   dataName: "비밀번호",
                   onSaved: (value) {
                     loginData["password"] = value!;

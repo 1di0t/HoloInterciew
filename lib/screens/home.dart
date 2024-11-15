@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "",
+                    "Main",
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
 
