@@ -14,6 +14,9 @@ class FeedBackPage extends StatefulWidget {
 
 class _FeedBackPageState extends State<FeedBackPage> {
   final List<Map<String, dynamic>> messages = [];
+  final List<String> questions = [];
+  final List<String> answers = [];
+  final List<String> feedback = [];
   final flaskServer = Constants.flaskServer;
   var isended = false;
 
@@ -37,6 +40,10 @@ class _FeedBackPageState extends State<FeedBackPage> {
         });
       });
     }
+  }
+
+  void displayMessage() {
+    messages.add({'texts': '안녕하세요! 저는 GPT-3입니다. 무엇을 도와드릴까요?', 'isUser': false});
   }
 
   @override

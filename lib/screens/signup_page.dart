@@ -31,18 +31,21 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               children: <Widget>[
                 InsertInfoWidget(
+                  isRequired: true,
                   dataName: "아이디",
                   onSaved: (value) {
                     signUpData["userID"] = value!;
                   },
                 ),
                 InsertInfoWidget(
+                  isRequired: true,
                   dataName: "비밀번호",
                   onSaved: (value) {
                     signUpData["password"] = value!;
                   },
                 ),
                 InsertInfoWidget(
+                  isRequired: true,
                   dataName: "이름",
                   onSaved: (value) {
                     signUpData["userName"] = value!;
