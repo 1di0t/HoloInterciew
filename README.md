@@ -1,16 +1,17 @@
-# holo_interview
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<br>Holo Interview<br/>\
+<tr>Holo Interview is a solo interview practice application designed to help users prepare for job interviews through AI-powered\conversations and feedback.\
+<br>Features<br/>\
+AI-Powered Interviews: Engage in realistic interview scenarios using GPT-4 API.\
+Instant Feedback: Receive personalized feedback on your responses.\
+Improved Answer Suggestions: Get recommendations for better answers based on your interview performance.\
+<br>Tech Stack<br/>
+Frontend: Flutter\
+Backend: Flask\
+AI Model: GPT-4 API\
+<br>Usage<br/>\
+Launch the Holo Interview app.\
+Respond to questions as you would in a real interview.\
+After the session, review your performance and receive feedback.\
+Get suggestions for improved answers.\
+<br>Contact<br/>\
+sunloadwork@gmail.com
